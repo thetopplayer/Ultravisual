@@ -24,9 +24,6 @@ class InspirationsViewController: UICollectionViewController {
       view.backgroundColor = UIColor(patternImage: patternImage)
     }
     collectionView!.backgroundColor = UIColor.clearColor()
-    
-    let layout = collectionViewLayout as UICollectionViewFlowLayout
-    layout.itemSize = CGSize(width: CGRectGetWidth(collectionView!.bounds), height: 100)
   }
 
 }

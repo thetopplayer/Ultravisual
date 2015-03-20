@@ -74,6 +74,35 @@ class UltravisualLayout: UICollectionViewLayout {
   override func prepareLayout() {
     cache.removeAll(keepCapacity: false)
     
+    let standardHeight = UltravisualLayoutConstants.Cell.standardHeight
+    let featuredHeight = UltravisualLayoutConstants.Cell.featuredHeight
+  
+    var frame = CGRectZero
+    var y: CGFloat = 0
+    
+    for item in 0..<numberOfItems {
+      let indexPath = NSIndexPath(forItem: item, inSection: 0)
+      let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+      /* Important because each cell has to slide over the top of the previous one */
+      attributes.zIndex = item
+      /* Initially set the height of the cell to the standard height */
+      var height = standardHeight
+      if indexPath.item == featuredItemIndex {
+        /* The featured cell */
+        let yOffset = standardHeight * nextItemPercentageOffset
+        y = collectionView!.contentOffset.y - yOffset
+        height = featuredHeight
+      } else if indexPath.item == (featuredItemIndex + 1) && indexPath.item != numberOfItems {
+        /* The cell directly below the featured cell, which grows as the user scrolls */
+        let maxY = y + standardHeight
+        height = standardHeight + max((featuredHeight - standardHeight) * nextItemPercentageOffset, 0)
+        y = maxY - height
+      }
+      frame = CGRect(x: 0, y: y, width: width, height: height)
+      attributes.frame = frame
+      cache.append(attributes)
+      y = CGRectGetMaxY(frame)
+    }
   }
   
   /* Return all attributes in the cache whose frame intersects with the rect passed to the method */
