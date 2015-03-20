@@ -116,6 +116,13 @@ class UltravisualLayout: UICollectionViewLayout {
     return layoutAttributes
   }
   
+  /* Return the content offset of the nearest cell which achieves the nice snapping effect, similar to a paged UIScrollView */
+  override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+    let itemIndex = round(proposedContentOffset.y / dragOffset)
+    let yOffset = itemIndex * dragOffset
+    return CGPoint(x: 0, y: yOffset)
+  }
+  
   /* Return true so that the layout is continuously invalidated as the user scrolls */
   override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
     return true
