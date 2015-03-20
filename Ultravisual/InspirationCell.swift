@@ -21,4 +21,18 @@ class InspirationCell: UICollectionViewCell {
     }
   }
   
+  override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes!) {
+    super.applyLayoutAttributes(layoutAttributes)
+    
+    let featuredHeight = UltravisualLayoutConstants.Cell.featuredHeight
+    let standardHeight = UltravisualLayoutConstants.Cell.standardHeight
+        
+    let delta = 1 - ((featuredHeight - CGRectGetHeight(frame)) / (featuredHeight - standardHeight))
+    
+    let minAlpha: CGFloat = 0.3
+    let maxAlpha: CGFloat = 0.75
+    
+    imageCoverView.alpha = maxAlpha - (delta * (maxAlpha - minAlpha))
+  }
+  
 }

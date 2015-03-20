@@ -11,7 +11,6 @@ import UIKit
 class InspirationsViewController: UICollectionViewController {
   
   let inspirations = Inspiration.allInspirations()
-  let colors = UIColor.palette()
   
   override func preferredStatusBarStyle() -> UIStatusBarStyle {
     return UIStatusBarStyle.LightContent
@@ -39,8 +38,8 @@ extension InspirationsViewController {
   }
   
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("InspirationCell", forIndexPath: indexPath) as UICollectionViewCell
-    cell.contentView.backgroundColor = colors[indexPath.item]
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("InspirationCell", forIndexPath: indexPath) as InspirationCell
+    cell.inspiration = inspirations[indexPath.item]
     return cell
   }
 

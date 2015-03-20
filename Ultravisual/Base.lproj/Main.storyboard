@@ -14,14 +14,40 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="l6S-ab-jJ7" customClass="UltravisualLayout" customModule="Ultravisual" customModuleProvider="target"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InspirationCell" id="n3U-hs-Bjw">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InspirationCell" id="n3U-hs-Bjw" customClass="InspirationCell" customModule="Ultravisual" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JTE-UP-31u">
+                                            <rect key="frame" x="0.0" y="-40" width="200" height="280"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="280" id="TdV-6a-O8e"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TtC-0H-Spg">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="TtC-0H-Spg" firstAttribute="top" secondItem="n3U-hs-Bjw" secondAttribute="top" id="Rm0-w3-T0f"/>
+                                    <constraint firstAttribute="bottom" secondItem="TtC-0H-Spg" secondAttribute="bottom" id="abj-JO-u5C"/>
+                                    <constraint firstAttribute="trailing" secondItem="JTE-UP-31u" secondAttribute="trailing" id="ebG-ig-cYy"/>
+                                    <constraint firstItem="JTE-UP-31u" firstAttribute="leading" secondItem="n3U-hs-Bjw" secondAttribute="leading" id="krm-XY-ZWw"/>
+                                    <constraint firstAttribute="trailing" secondItem="TtC-0H-Spg" secondAttribute="trailing" id="l5A-fQ-QUj"/>
+                                    <constraint firstAttribute="centerY" secondItem="JTE-UP-31u" secondAttribute="centerY" id="lX5-4E-rrf"/>
+                                    <constraint firstItem="TtC-0H-Spg" firstAttribute="leading" secondItem="n3U-hs-Bjw" secondAttribute="leading" id="pSB-yt-1sO"/>
+                                </constraints>
+                                <size key="customSize" width="200" height="200"/>
+                                <connections>
+                                    <outlet property="imageCoverView" destination="TtC-0H-Spg" id="8e8-zR-RMA"/>
+                                    <outlet property="imageView" destination="JTE-UP-31u" id="Es5-uW-UoG"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
