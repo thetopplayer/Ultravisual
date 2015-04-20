@@ -39,9 +39,23 @@ extension InspirationsViewController {
   }
   
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("InspirationCell", forIndexPath: indexPath) as InspirationCell
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("InspirationCell", forIndexPath: indexPath) as! InspirationCell
     cell.inspiration = inspirations[indexPath.item]
     return cell
   }
 
+}
+
+/* Make the selected cell the featured cell */
+
+extension InspirationsViewController {
+  
+  override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    let layout = collectionViewLayout as! UltravisualLayout
+    let offset = layout.dragOffset * CGFloat(indexPath.item)
+    if collectionView.contentOffset.y != offset {
+      collectionView.setContentOffset(CGPoint(x: 0, y: offset), animated: true)
+    }
+  }
+  
 }

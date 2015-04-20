@@ -15,7 +15,7 @@ class Inspiration: Session {
     if let URL = NSBundle.mainBundle().URLForResource("Inspirations", withExtension: "plist") {
       if let tutorialsFromPlist = NSArray(contentsOfURL: URL) {
         for dictionary in tutorialsFromPlist {
-          let inspiration = Inspiration(dictionary: dictionary as NSDictionary)
+          let inspiration = Inspiration(dictionary: dictionary as! NSDictionary)
           inspirations.append(inspiration)
         }
       }
